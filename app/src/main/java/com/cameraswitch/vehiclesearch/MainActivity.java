@@ -9,7 +9,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.speech.RecognizerIntent;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -44,7 +43,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, TextToSpeech.OnInitListener,
+        implements NavigationView.OnNavigationItemSelectedListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static String mVIN = Const.DEFAULT_VIN;
@@ -85,7 +84,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         mFabBarcode = (FloatingActionButton) findViewById(R.id.fab_mic);
-        mFabBarcode.setEnabled(false);
         mFabBarcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -292,11 +290,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onInit(int status) {
-        mFabBarcode.setEnabled(true);
     }
 
     @Override
